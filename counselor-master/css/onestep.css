@@ -1,0 +1,119 @@
+/* 2025-26 トレンド: グラスモルフィズム & スッキリしたナビ */
+.top-wrap {
+  background: #1a1a1a;
+  padding: 8px 0;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+.top-wrap a {
+  color: rgba(255,255,255,0.8);
+  transition: color 0.3s;
+}
+.top-wrap a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.ftco_navbar {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(10px); /* 背景ぼかし */
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+  padding: 15px 0 !important;
+}
+
+.navbar-brand {
+  font-weight: 700 !important;
+  color: #000 !important;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+margin-left: 10px;
+}
+.navbar-brand i {
+  font-size: 18px;
+  margin-left: 5px;
+  color: #007bff; /* アクセントカラー */
+}
+
+.nav-link {
+  color: #333 !important;
+  font-weight: 500 !important;
+  margin: 0 5px;
+  position: relative;
+  transition: 0.3s;
+}
+
+/* ホバー時のモダンな下線アニメーション */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  right: 10px;
+  height: 2px;
+  background: #007bff;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* ヘッダー内のコンバージョンボタン */
+.nav-btn {
+  background: #007bff;
+  color: #fff !important;
+  border-radius: 50px;
+  padding: 10px 25px !important;
+  margin-left: 15px;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  transition: 0.3s;
+}
+.nav-btn:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+@media (max-width: 991.98px) {
+  .nav-btn { margin-left: 0; margin-top: 10px; text-align: center; }
+  .top-wrap .social-media { text-align: center; margin-top: 5px; }
+}
+/* ナビゲーションバー全体の重なり順を最前面に固定 */
+.ftco_navbar {
+  z-index: 9999 !important; /* 他の要素より必ず上に来るように設定 */
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+/* スマホ用ハンバーガーメニューが開いた時の設定 */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    position: relative;
+    z-index: 10000; /* ボタンよりさらに前面へ */
+    background: rgba(255, 255, 255, 0.98); /* 開いた時は中身を見やすくするため不透明度を上げる */
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  /* hero-wrap（メイン画像）との干渉を防ぐ */
+  .hero-wrap {
+    z-index: 1; 
+  }
+  .hero-wrap .overlay {
+    z-index: 2;
+  }
+}
+
+/* ハンバーガーアイコン自体のクリックエリア確保 */
+.navbar-toggler {
+  z-index: 10001;
+  border: none;
+  outline: none !important;
+  margin-right: 10px;
+}
