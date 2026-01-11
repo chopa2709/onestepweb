@@ -1,25 +1,36 @@
-/* 2025-26 トレンド: グラスモルフィズム & スッキリしたナビ */
+/* ==========================================================================
+   1. 基本カラー & 共通設定
+   ========================================================================== */
+:root {
+  --main-green: #589167;
+  --dark-green: #2d5a27;
+  --forest-dark: #1e3932;
+  --matte-black: #1a1a1a;
+  --true-black: #121212;
+}
+
+.text-nowrap { white-space: nowrap; }
+
+/* ==========================================================================
+   2. ナビゲーション (Top Bar & Navbar)
+   ========================================================================== */
 .top-wrap {
-  background: #1a1a1a;
+  background: var(--true-black);
   padding: 8px 0;
   font-size: 13px;
   letter-spacing: 0.05em;
 }
-.top-wrap a {
-  color: rgba(255,255,255,0.8);
-  transition: color 0.3s;
-}
-.top-wrap a:hover {
-  color: #fff;
-  text-decoration: none;
-}
+.top-wrap a { color: rgba(255,255,255,0.8); transition: 0.3s; }
+.top-wrap a:hover { color: #fff; text-decoration: none; }
 
 .ftco_navbar {
+  z-index: 9999 !important;
   background: rgba(255, 255, 255, 0.9) !important;
-  backdrop-filter: blur(10px); /* 背景ぼかし */
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 2px 15px rgba(0,0,0,0.05);
   padding: 15px 0 !important;
+  transition: all 0.3s ease;
 }
 
 .navbar-brand {
@@ -28,13 +39,9 @@
   font-size: 24px;
   display: flex;
   align-items: center;
-margin-left: 10px;
+  margin-left: 10px;
 }
-.navbar-brand i {
-  font-size: 18px;
-  margin-left: 5px;
-  color: #007bff; /* アクセントカラー */
-}
+.navbar-brand i { color: var(--main-green); font-size: 18px; margin-left: 5px; }
 
 .nav-link {
   color: #333 !important;
@@ -43,77 +50,153 @@ margin-left: 10px;
   position: relative;
   transition: 0.3s;
 }
-
-/* ホバー時のモダンな下線アニメーション */
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: 5px;
-  left: 10px;
-  right: 10px;
-  height: 2px;
-  background: #007bff;
+  bottom: 5px; left: 10px; right: 10px; height: 2px;
+  background: var(--main-green);
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
-.nav-link:hover::after {
-  transform: scaleX(1);
-}
+.nav-link:hover::after { transform: scaleX(1); }
 
-/* ヘッダー内のコンバージョンボタン */
+/* コンバージョンボタン */
 .nav-btn {
-  background: #007bff;
+  background: var(--main-green);
   color: #fff !important;
   border-radius: 50px;
   padding: 10px 25px !important;
   margin-left: 15px;
-  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(88, 145, 103, 0.3);
   transition: 0.3s;
 }
 .nav-btn:hover {
-  background: #0056b3;
+  background: var(--dark-green);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+  box-shadow: 0 6px 20px rgba(88, 145, 103, 0.4);
 }
 
+/* ==========================================================================
+   3. ヒーローセクション (Hero Area)
+   ========================================================================== */
+.hero-wrap { position: relative; overflow: hidden; }
+
+/* 背景を暗くするオーバーレイ */
+.hero-wrap .overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(18,18,18,0.75) 50%, rgba(30,57,50,0.6) 100%) !important;
+  opacity: 1 !important;
+  z-index: 1;
+}
+
+.hero-wrap .container { position: relative; z-index: 2 !important; }
+.hero-wrap .text { position: relative; z-index: 5; }
+
+/* タイトル周り */
+.hero-title {
+  color: #fff !important;
+  letter-spacing: 0.1em;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
+}
+.hero-title .br-sp {
+  font-size: 1.2em;
+  font-weight: 800;
+  display: block;
+  margin-bottom: 10px;
+}
+.hero-title .br-wn {
+  font-size: 0.5em;
+  font-weight: 500;
+  display: block;
+  opacity: 0.95;
+}
+.brand-icon {
+  color: var(--main-green) !important;
+  font-size: 0.8em;
+  margin-left: 5px;
+  display: inline-block;
+}
+
+.hero-wrap p {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-weight: 500 !important;
+}
+
+/* ==========================================================================
+   4. ボタン & 装飾パーツ
+   ========================================================================== */
+/* メインボタン */
+.btn.btn-primary {
+  background: var(--main-green) !important;
+  border: 1px solid var(--forest-dark) !important;
+  color: #fff !important;
+  border-radius: 50px !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+  transition: 0.3s ease;
+}
+.btn.btn-primary:hover {
+  background: var(--dark-green) !important;
+  transform: translateY(-2px);
+}
+
+/* サブボタン (お問い合わせ) */
+.btn.btn-white {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  border: 1px solid #fff !important;
+  backdrop-filter: blur(5px);
+  border-radius: 50px !important;
+  transition: 0.3s;
+}
+
+/* 動画ボタン */
+.img-video {
+  z-index: 10;
+  background: var(--forest-dark);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(30, 57, 50, 0.4);
+}
+
+/* ==========================================================================
+   5. レスポンシブ (Mobile / Tablet)
+   ========================================================================== */
+/* タブレット以下 */
 @media (max-width: 991.98px) {
-  .nav-btn { margin-left: 0; margin-top: 10px; text-align: center; }
+  .nav-btn { margin: 10px 0 0 0; text-align: center; }
   .top-wrap .social-media { text-align: center; margin-top: 5px; }
-}
-/* ナビゲーションバー全体の重なり順を最前面に固定 */
-.ftco_navbar {
-  z-index: 9999 !important; /* 他の要素より必ず上に来るように設定 */
-  background: rgba(255, 255, 255, 0.9) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-/* スマホ用ハンバーガーメニューが開いた時の設定 */
-@media (max-width: 991.98px) {
+  
   .navbar-collapse {
     position: relative;
-    z-index: 10000; /* ボタンよりさらに前面へ */
-    background: rgba(255, 255, 255, 0.98); /* 開いた時は中身を見やすくするため不透明度を上げる */
+    z-index: 10000;
+    background: rgba(255, 255, 255, 0.98);
     margin-top: 10px;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   }
-  
-  /* hero-wrap（メイン画像）との干渉を防ぐ */
-  .hero-wrap {
-    z-index: 1; 
-  }
-  .hero-wrap .overlay {
-    z-index: 2;
-  }
+  .navbar-toggler { z-index: 10001; border: none; outline: none !important; }
 }
 
-/* ハンバーガーアイコン自体のクリックエリア確保 */
-.navbar-toggler {
-  z-index: 10001;
-  border: none;
-  outline: none !important;
-  margin-right: 10px;
+/* スマホ */
+@media (max-width: 767.98px) {
+  .hero-title .br-sp {
+    font-size: 3.2rem !important; /* 適切なサイズに調整 */
+    display: inline-flex !important;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .hero-title .br-wn {
+    display: block !important;
+    font-size: 0.9rem !important;
+    line-height: 1.5;
+    margin-top: 5px;
+  }
+  .brand-icon { font-size: 0.7em !important; margin-left: 8px; }
+
+  .hero-wrap, .slider-text {
+    height: auto !important;
+    min-height: 600px;
+    padding: 100px 0 50px 0;
+  }
 }
